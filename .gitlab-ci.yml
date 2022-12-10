@@ -1,4 +1,5 @@
 variables:
+  REMOTE_HOST: deploy@172.16.4.132
   FRONTEND_IMAGE: ${CI_REGISTRY_IMAGE}/frontend
   BACKEND_IMAGE: ${CI_REGISTRY_IMAGE}/backend
 
@@ -64,4 +65,28 @@ deploy-job:      # This job runs in the deploy stage.
   script:
     - echo "Deploying application..."
     - echo "Application successfully deployed."
-
+    
+deploy:
+  image: alpine:latest
+  stage: deploy
+  script:
+    - apk update && apk add rsync openssh curl
+    # Prepare SSH settings
+    - mkdir -p ~/.ssh && (umask  077 ; echo "${DEPLOY_KEY_PRIVATE}" | base64 -d > ~/.ssh/id_rsa)
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+    # Prepare files for transfer
+    - mkdir remote_dir
+    - cp docker-compose.yml remote_dir/docker-compose.yml
+    - echo "BACKEND_IMAGE=${BACKEND_IMAGE}" >> remote_dir/.env
+    - echo "FRONTEND_IMAGE=${FRONTEND_IMAGE}" >> remote_dir/.env
+    # Transfer to server
+    - rsync -r remote_dir "${REMOTE_HOST}:./"
+    # Run commands on the server
+    - ssh ${REMOTE_HOST} /bin/bash 
+            "
+            echo 'Starting..';
+            cd ~/remote_dir;
+            docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY;
+            docker-compose pull;
+            docker-compose up -d;
+            "
