@@ -1,3 +1,7 @@
+variables:
+  FRONTEND_IMAGE: ${CI_REGISTRY_IMAGE}/frontend
+  BACKEND_IMAGE: ${CI_REGISTRY_IMAGE}/backend
+
 
 stages:          # List of stages for jobs, and their order of execution
   - build
@@ -45,3 +49,4 @@ deploy-job:      # This job runs in the deploy stage.
   script:
     - echo "Deploying application..."
     - echo "Application successfully deployed."
+
