@@ -37,3 +37,18 @@ deploy-job:      # This job runs in the deploy stage.
   script:
     - echo "Deploying application..."
     - echo "Application successfully deployed."
+
+
+build:
+  image: docker:latest
+  stage: build
+  services:
+    - docker:dind
+  script:
+    - docker login -u gitlab-ci-token -p "${CI_JOB_TOKEN}" "${CI_REGISTRY}"
+    # Build & push backend
+    - docker build -f backend/DockerfileServer -t "${BACKEND_IMAGE}" .
+    - docker push "${BACKEND_IMAGE}"
+    # Build & push frontend
+    - docker build -f frontend/DockerfileServer -t "${FRONTEND_IMAGE}" .
+    - docker push "${FRONTEND_IMAGE}"
