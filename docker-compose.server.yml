@@ -2,7 +2,7 @@ services:
   frontend:
     image: ${FRONTEND_IMAGE}
     ports:
-      - "3001:8080"
+      - "8080:3001"
     env_file:
       - .env
     restart: always
@@ -10,7 +10,7 @@ services:
   backend:
     image: ${FRONTEND_IMAGE}
     ports:
-      - "5001:4040"
+      - "4040:5001"
     env_file:
       - .env
     restart: always
