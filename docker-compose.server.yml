@@ -1,0 +1,16 @@
+services:
+  frontend:
+    image: ${FRONTEND_IMAGE}
+    ports:
+      - "8080:3001"
+    env_file:
+      - .env
+    restart: always
+
+  backend:
+    image: ${FRONTEND_IMAGE}
+    ports:
+      - "4040:5001"
+    env_file:
+      - .env
+    restart: always
