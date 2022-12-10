@@ -8,7 +8,7 @@ stages:          # List of stages for jobs, and their order of execution
   - test
   - deploy
 
-build-job:       # This job runs in the build stage, which runs first.
+build-job-main:       # This job runs in the build stage, which runs first.
   image: docker:latest
   stage: build
   services:
@@ -21,6 +21,21 @@ build-job:       # This job runs in the build stage, which runs first.
     # Build & push frontend
     - docker build -f frontend/Dockerfile -t "${FRONTEND_IMAGE}" .
     - docker push "${FRONTEND_IMAGE}"
+  only:
+    - main
+
+build-job:       # This job runs in the build stage, which runs first.
+  image: docker:latest
+  stage: build
+  services:
+    - docker:dind
+  script:
+    # Build backend
+    - docker build -f backend/Dockerfile -t "${BACKEND_IMAGE}" .
+    # Build frontend
+    - docker build -f frontend/Dockerfile -t "${FRONTEND_IMAGE}" .
+  except:
+    - main
 
 unit-test-job:   # This job runs in the test stage.
   image: node:latest
