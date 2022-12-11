@@ -1,8 +1,4 @@
 FROM node:latest
-COPY ./frontend /opt/app
-RUN cd /opt/app \
-  && rm package-lock.json \
-  && npm install --prod \
-  && npm run build
+COPY . /opt/app
 WORKDIR /opt/app
-CMD ["npx", "serve", "-s", "build"]
+CMD ["npm", "run", "start"]

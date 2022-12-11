@@ -3,12 +3,13 @@ services:
     build:
       context: ./frontend
     ports:
-      - "3000:3001"
+      - "3001:3000"
     volumes:
       - './frontend:/opt/app'
     restart: always
     environment:
       - "CI:'true'"
+      
   backend:
     build:
       context: ./backend
