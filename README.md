@@ -1,24 +1,17 @@
 # Project Team 8
 
-
-
 ## Getting started
 
 To get started,
-1. `docker-compose up -d`
-    This command starts docker containers for frontend and backend code. Frontend is running at port `3001` and backend at port `5001`.
+1. Run `docker-compose up -d` in the root folder.
+    This command starts docker containers for frontend and backend. Frontend is running at port `3001` and backend at port `5001`.
+    Frontend: `http://localhost:3001/`
+    Backend: `http://localhost:5001/`
 
-## Add your files
+## Production URL
+1. Frontend: `http://172.16.4.132:8080/`
+2. Backend: `http://172.16.4.132:4040/`
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
-
-```
-cd existing_repo
-git remote add origin https://gitlab.tamk.cloud/courses/web-software-production-5g00dm04/3005/project-team-8.git
-git branch -M main
-git push -uf origin main
-```
 
 ## Test and Deploy
 
