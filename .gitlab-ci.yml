@@ -17,10 +17,10 @@ build-job-main:       # This job runs in the build stage, which runs first.
   script:
     - docker login -u gitlab-ci-token -p "${CI_JOB_TOKEN}" "${CI_REGISTRY}"
     # Build & push backend
-    - docker build -f backend/Dockerfile -t "${BACKEND_IMAGE}" .
+    - docker build -f backend/DockerfileServer -t "${BACKEND_IMAGE}" .
     - docker push "${BACKEND_IMAGE}"
     # Build & push frontend
-    - docker build -f frontend/Dockerfile -t "${FRONTEND_IMAGE}" .
+    - docker build -f frontend/DockerfileServer -t "${FRONTEND_IMAGE}" .
     - docker push "${FRONTEND_IMAGE}"
   only:
     - main
@@ -32,9 +32,9 @@ build-job:       # This job runs in the build stage, which runs first.
     - docker:dind
   script:
     # Build backend
-    - docker build -f backend/Dockerfile -t "${BACKEND_IMAGE}" .
+    - docker build -f backend/DockerfileServer -t "${BACKEND_IMAGE}" .
     # Build frontend
-    - docker build -f frontend/Dockerfile -t "${FRONTEND_IMAGE}" .
+    - docker build -f frontend/DockerfileServer -t "${FRONTEND_IMAGE}" .
   except:
     - main
 
