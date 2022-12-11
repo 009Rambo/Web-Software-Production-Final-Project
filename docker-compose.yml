@@ -17,24 +17,4 @@ services:
     volumes:
       - './backend:/opt/app'
     restart: always
-
-
-
-# services:
-#   frontend:
-#     build:
-#       context: ./frontend
-#     ports:
-#       - "8080:3001"
-#     env_file:
-#       - .env
-#     restart: always
-#   backend:
-#     build:
-#       context: ./backend
-#     ports:
-#       - "5050:5001"
-#     env_file:
-#       - .env
-#     restart: always
     

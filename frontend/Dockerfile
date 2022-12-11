@@ -1,5 +1,5 @@
 FROM node:latest
-COPY . /opt/app
+COPY ./frontend /opt/app
 RUN cd /opt/app \
   && rm package-lock.json \
   && npm install --prod \

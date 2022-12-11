@@ -1,5 +1,5 @@
 FROM node:latest
-COPY . /opt/app
+COPY ./backend /opt/app
 RUN cd /opt/app \
   && npm install --prod 
 WORKDIR /opt/app
