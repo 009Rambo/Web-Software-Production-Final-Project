@@ -1,0 +1,31 @@
+
+GET http://localhost:5001/ HTTP/1.1
+###
+GET http://localhost:5001/api/v1 HTTP/1.1
+###
+GET http://localhost:5001/api/v1/emojis HTTP/1.1
+###
+GET http://localhost:5001/api/v1/todos HTTP/1.1
+###
+GET http://localhost:5001/api/v1/todos/1 HTTP/1.1
+###
+POST http://localhost:5001/api/v1/todos HTTP/1.1
+content-type: application/json
+
+{
+    "id": 4,
+    "text": "Thor"
+}
+
+###
+PATCH  http://localhost:5001/api/v1/todos/4 HTTP/1.1
+content-type: application/json
+
+{
+    "text": "Casino Royale",
+    "done" : true
+}
+
+###
+DELETE http://localhost:5001/api/v1/todos/4 HTTP/1.1
+content-type: application/json
