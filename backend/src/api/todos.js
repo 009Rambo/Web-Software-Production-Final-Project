@@ -37,8 +37,13 @@ router.get('/:id', (req, res) => {
   });
 
 router.post('/', (req, res) => {
-    const { id, text } = req.body;
-    todos.push({ id, text, done: false });
+    const { text } = req.body;
+
+    const maxId = todos.reduce(function(prev, current) {
+      return (prev.id > current.id) ? prev.id : current.id
+    })
+
+    todos.push({ id: maxId + 1, text, done: false });
     res.status(201).json({ message: 'Created' });
   });
 
