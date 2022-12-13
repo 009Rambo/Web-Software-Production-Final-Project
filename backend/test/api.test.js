@@ -88,7 +88,7 @@ describe('GET /api/v1/emojis', () => {
         .set('Accept', 'application/json')
         .send({ id: 4, text: 'Sleep' })
         .expect('Content-Type', /json/)
-        .expect(201, { message: 'Created' });
+        .expect(201, { id: 4, text: 'Sleep', done: false });
 
       // Check that it was actually added as well
       const expected = {
@@ -132,7 +132,7 @@ describe('GET /api/v1/emojis', () => {
         .delete('/api/v1/todos/4')
         .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
-        .expect(200, { message: 'Deleted' });
+        .expect(200, { id: 4, text: 'Sleep', done: false });
         
       await request(app)
         .get('/api/v1/todos/4')
