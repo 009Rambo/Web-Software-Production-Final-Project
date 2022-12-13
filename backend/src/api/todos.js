@@ -43,8 +43,9 @@ router.post('/', (req, res) => {
       return (prev.id > current.id) ? prev.id : current.id
     })
 
-    todos.push({ id: maxId + 1, text, done: false });
-    res.status(201).json({ message: 'Created' });
+    const newTodo = { id: maxId + 1, text, done: false };
+    todos.push(newTodo);
+    res.status(201).json(newTodo);
   });
 
 
@@ -63,12 +64,20 @@ router.patch('/:id', (req, res) => {
 
 
 router.delete('/:id', (req, res) => {
-    const { id } = req.params;
+  const { id } = req.params;
+  
+  const deletedTodo = todos.filter(todo => {
+    return todo.id === Number(id)
+  });
 
-    todos = todos.filter((b) => {
-        return b.id !== Number(id)
+  const updatedTodos = todos.filter((b) => {
+      return b.id !== Number(id)
     });
-    res.status(200).json({ message: 'Deleted' });
+
+    todos = updatedTodos;
+
+  console.log('deletedTodo ', deletedTodo);
+  res.status(200).json(deletedTodo[0]);
 });
   
 
