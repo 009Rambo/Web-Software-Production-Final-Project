@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url="";
+let url="";
 if (process.env.NODE_ENVIRONMENT === "development") {
     url = "http://localhost:5001/api/v1";
 } else {
