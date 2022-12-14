@@ -1,6 +1,11 @@
-import axios from "axios";
+const axios = require('axios');
 
-const url = "http://localhost:5001/api/v1";
+let url="";
+if (process.env.NODE_ENVIRONMENT === "development") {
+   const url = "http://localhost:5001/api/v1";
+} else {
+    url = "http://172.16.4.132:5001/api/v1";
+}
 
 export const getTodosApi = async () => {
     const response = await axios.get(url + '/todos');
