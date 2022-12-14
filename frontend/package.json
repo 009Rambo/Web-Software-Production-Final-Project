@@ -24,7 +24,6 @@
       "react-app/jest"
     ]
   },
-  "type": "module",
   "browserslist": {
     "production": [
       ">0.2%",
