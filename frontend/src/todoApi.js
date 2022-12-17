@@ -4,7 +4,7 @@ let url="";
 if (process.env.NODE_ENVIRONMENT === "development") {
    const url = "http://localhost:5001/api/v1";
 } else {
-    url = "http://172.16.4.132:5001/api/v1";
+    url = "http://172.16.4.132:4040//api/v1";
 }
 
 export const getTodosApi = async () => {
