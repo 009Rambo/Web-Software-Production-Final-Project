@@ -38,10 +38,13 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
     const { text } = req.body;
+    let maxId = 0;
 
-    const maxId = todos.reduce(function(prev, current) {
-      return (prev.id > current.id) ? prev.id : current.id
-    })
+    if (todos.length > 0) {
+      maxId = todos.reduce(function(prev, current) {
+        return (prev.id > current.id) ? prev.id : current.id
+      })
+    }
 
     const newTodo = { id: maxId + 1, text, done: false };
     todos.push(newTodo);

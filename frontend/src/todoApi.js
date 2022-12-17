@@ -1,15 +1,10 @@
 import axios from "axios";
 
-let url="";
-if (process.env.NODE_ENVIRONMENT === "development") {
-   const url = "http://localhost:5001/api/v1";
-} else {
-    url = "http://172.16.4.132:4040/api/v1";
-}
+const url = process.env.REACT_APP_BACKEND;
 
 export const getTodosApi = async () => {
-    const response = await axios.get(url + '/todos');
-    return response.data;
+  const response = await axios.get(url + '/todos');
+  return response.data;
 }
 
 export const addTodoApi = async (todo) => {
