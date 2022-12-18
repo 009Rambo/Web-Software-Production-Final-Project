@@ -40,10 +40,12 @@ router.post('/', (req, res) => {
     const { text } = req.body;
     let maxId = 0;
 
-    if (todos.length > 0) {
+    if (todos.length > 1) {
       maxId = todos.reduce(function(prev, current) {
         return (prev.id > current.id) ? prev.id : current.id
       })
+    } else if (todos.length === 1) {
+      maxId = todos[0].id;
     }
 
     const newTodo = { id: maxId + 1, text, done: false };
