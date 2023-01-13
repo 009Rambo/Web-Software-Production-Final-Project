@@ -1,5 +1,5 @@
 variables:
-  REMOTE_HOST: deploy@172.16.4.132
+  REMOTE_HOST: deploy@172.16.4.131
   FRONTEND_IMAGE: ${CI_REGISTRY_IMAGE}/frontend
   BACKEND_IMAGE: ${CI_REGISTRY_IMAGE}/backend
 
