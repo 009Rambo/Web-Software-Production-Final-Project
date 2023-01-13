@@ -15,8 +15,8 @@
   },
   "scripts": {
     "start": "cross-env REACT_APP_BACKEND=http://localhost:5001/api/v1 react-scripts start",
-    "build:dev": "cross-env REACT_APP_BACKEND=http://172.16.4.132:4040/api/v1 react-scripts build",
-    "build:prod": "cross-env REACT_APP_BACKEND=http://172.16.4.132:4040/api/v1 react-scripts build",
+    "build:dev": "cross-env REACT_APP_BACKEND=http://172.16.4.131:4040/api/v1 react-scripts build",
+    "build:prod": "cross-env REACT_APP_BACKEND=http://172.16.4.131:4040/api/v1 react-scripts build",
     "test": "react-scripts test --transformIgnorePatterns",
     "eject": "react-scripts eject"
   },
