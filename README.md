@@ -53,9 +53,6 @@ content-type: application/json
 ## Completed Phases
 We believe that we have completed till the fourth phase.
 
-## Expected project grade and the reasoning 
-We expect our grade to be 5 since we have completed the required number of exercises + final project and also participated in the AWS week.
-
 
 ## Team members
 Srijana Poudel & Ramesh Pandey
